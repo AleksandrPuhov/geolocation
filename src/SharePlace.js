@@ -16,7 +16,25 @@ class PlaceFinder {
             'submit',
             this.findAdressHandler.bind(this)
         );
-        //this.shareBtn.addEventListener('click');
+        this.shareBtn.addEventListener('click', this.sharePlacehandler);
+    }
+
+    sharePlacehandler() {
+        const sharedLinkInputEl = document.getElementById('share-link');
+        if (!navigator.clipboard) {
+            sharedLinkInputEl.select();
+            return;
+        }
+
+        navigator.clipboard
+            .writeText(sharedLinkInputEl.value)
+            .then(() => {
+                alert('Copied into clipboard!');
+            })
+            .catch((err) => {
+                console.log(err);
+                sharedLinkInputEl.select();
+            });
     }
 
     selectPlace(coordinates, address) {
@@ -30,7 +48,7 @@ class PlaceFinder {
         const sharedLinkInputEl = document.getElementById('share-link');
         sharedLinkInputEl.value = `${
             location.origin
-        }/my-place?address=${encodeURI(address)}&lat=${coordinates[0]}&lon=${
+        }/my-place?address=${encodeURI(address)}&lat=${coordinates[0]}&lng=${
             coordinates[1]
         }`;
     }

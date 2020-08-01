@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My Place</title>
-    <link rel="stylesheet" href="../assets/styles/app.css" />
-    <link rel="stylesheet" href="../assets/styles/my-place.css" />
-    <script src="../assets/scripts/MyPlace.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <h1></h1>
-    </header>
 
-    <section id="selected-place">
-      <div id="map"></div>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>My Place</title>
+  <link rel="stylesheet" href="../assets/styles/app.css" />
+  <link rel="stylesheet" href="../assets/styles/my-place.css" />
 
-    <section id="share-controls">
-      <a href="/">Share a New Place!</a>
-    </section>
-  </body>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=en_US&apikey=7f64caeb-71c0-440a-a6e2-4ffdaa8d1f23"
+    type="text/javascript" defer></script>
+
+  <script src="../assets/scripts/MyPlace.js" defer></script>
+
+</head>
+
+<body>
+  <header>
+    <h1></h1>
+  </header>
+
+  <section id="selected-place">
+    <div id="map"></div>
+  </section>
+
+  <section id="share-controls">
+    <a href="/">Share a New Place!</a>
+  </section>
+
+</body>
+
 </html>

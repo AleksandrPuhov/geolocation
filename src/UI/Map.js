@@ -21,16 +21,20 @@ export class Map {
             mapEl.removeChild(pEl);
         }
 
-        this.map = new ymaps.Map('map', {
-            center: coordinates,
-            zoom: 15,
-        });
+        ymaps.ready(() => {
+            this.map = new ymaps.Map('map', {
+                center: coordinates,
+                zoom: 15,
+            });
 
-        this.map.geoObjects.add(
-            new ymaps.Placemark(coordinates, {
-                preset: 'islands#icon',
-                iconColor: '#0095b6',
-            })
-        );
+            if (this.map) {
+                this.map.geoObjects.add(
+                    new ymaps.Placemark(coordinates, {
+                        preset: 'islands#icon',
+                        iconColor: '#0095b6',
+                    })
+                );
+            }
+        });
     }
 }
