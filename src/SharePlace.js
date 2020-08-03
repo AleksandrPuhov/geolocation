@@ -44,13 +44,28 @@ class PlaceFinder {
         } else {
             this.map = new Map(coordinates);
         }
-        this.shareBtn.disabled = false;
-        const sharedLinkInputEl = document.getElementById('share-link');
-        sharedLinkInputEl.value = `${
-            location.origin
-        }/my-place?address=${encodeURI(address)}&lat=${coordinates[0]}&lng=${
-            coordinates[1]
-        }`;
+
+        fetch('http://localhost:3000/add-location', {
+            method: 'POST',
+            body: JSON.stringify({
+                address: address,
+                lat: coordinates[0],
+                lng: coordinates[1],
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                const locationId = data.locId;
+
+                this.shareBtn.disabled = false;
+                const sharedLinkInputEl = document.getElementById('share-link');
+                sharedLinkInputEl.value = `${location.origin}/my-place?location=${locationId}`;
+            });
     }
 
     locateUserHandler() {
